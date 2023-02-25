@@ -2,12 +2,12 @@ import { connect } from "react-redux"
 import { Summary } from "../components/Summary"
 
 const mapStateToProps = (state) => {
-  const subTotal = state.items.reduce((sum, item) => sum + item.price * item.quantity, 0)
-  const tipAmount = subTotal * (state.tipPercentage / 100)
-  const total = subTotal + tipAmount
+  const subtotal = state.items.reduce((sum, item) => sum + item.price * item.quantity, 0)
+  const tipAmount = subtotal * (state.tipPercentage / 100)
+  const total = subtotal + tipAmount
 
   return {
-    subTotal, tipAmount, total
+    subtotal, tipAmount, total
   }
 }
 
