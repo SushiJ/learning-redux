@@ -1,9 +1,9 @@
-import { Stack } from '@chakra-ui/react';
+import { Stack, VStack } from '@chakra-ui/react';
 import MenuItem from './MenuItem';
 
 export const MenuItems = ({ items }) => {
   return (
-    <Stack orientation="vertical" spacing="space60">
+    <Stack w='full'>
       {items.map((item) => (
         <MenuItem {...item} key={item.uuid} />
       ))}

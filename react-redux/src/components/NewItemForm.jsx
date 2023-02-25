@@ -1,4 +1,4 @@
-import { Box, Button, Input, FormLabel } from '@chakra-ui/react';
+import { Box, Button, Input, FormLabel, VStack, FormControl } from '@chakra-ui/react';
 import { useState } from 'react';
 
 export const NewItemForm = ({ onSubmit }) => {
@@ -23,20 +23,26 @@ export const NewItemForm = ({ onSubmit }) => {
   };
 
   return (
-    <Box >
-      <form onSubmit={handleSubmit}>
-        <Box >
-          <FormLabel htmlFor="item-name">Item Name</FormLabel>
+    <VStack alignSelf='start' my='2'>
+      <FormControl onSubmit={handleSubmit}>
+        <Box>
+          <FormLabel fontSize='lg' htmlFor="item-name">Item Name</FormLabel>
           <Input
+            fontSize='md'
+            border='2px'
+            rounded='md'
             id="item-name"
             type="text"
             value={name}
             onChange={(event) => setName(event.target.value)}
           />
         </Box>
-        <Box >
-          <FormLabel htmlFor="item-price">Price</FormLabel>
+        <Box my='2'>
+          <FormLabel fontSize='lg' htmlFor="item-price">Price</FormLabel>
           <Input
+            fontSize='md'
+            border='2px'
+            rounded='md'
             id="item-price"
             type="number"
             value={price}
@@ -44,6 +50,10 @@ export const NewItemForm = ({ onSubmit }) => {
           />
         </Box>
         <Button
+          bgColor='pink'
+          p='2'
+          rounded='md'
+          mb='2'
           disabled={!isValid()}
           onClick={handleSubmit}
           type="submit"
@@ -51,8 +61,8 @@ export const NewItemForm = ({ onSubmit }) => {
         >
           🍳 Add Item
         </Button>
-      </form>
-    </Box>
+      </FormControl>
+    </VStack>
   );
 };
 

@@ -1,11 +1,11 @@
 import {
   Box,
   Button,
-  Card,
   Flex,
   Heading,
   Input,
-  FormLabel
+  FormLabel,
+  Stack
 } from '@chakra-ui/react';
 
 import { toCurrency } from '../utilities';
@@ -16,45 +16,51 @@ export const MenuItem = ({
   price,
   quantity,
   total,
-  updatePrice = () => {},
-  updateQuantity = () => {},
-  remove = () => {}
+  updatePrice = () => { },
+  updateQuantity = () => { },
+  remove = () => { }
 }) => {
   return (
-    <Card marginTop="space40">
-      <Heading variant="heading30" as="h3">
+    <Stack w='full'>
+      <Heading fontSize='xl' p='1'>
         {name}
       </Heading>
       <Flex>
-        <Box padding="space20">
-          <FormLabel htmlFor={`$item-${uuid}-price`}>Price</FormLabel>
+        <Box p='1'>
+          <FormLabel fontSize='lg' htmlFor={`$item-${uuid}-price`}>Price</FormLabel>
           <Input
+            w='auto'
+            border={'1px'}
+            rounded='sm'
             id={`$item-${uuid}-price`}
             value={price}
             type="number"
             onChange={(event) => updatePrice(event.target.value)}
           />
         </Box>
-        <Box padding="space20">
-          <FormLabel htmlFor={`$item-${uuid}-quantity`}>Price</FormLabel>
+        <Box p='1'>
+          <FormLabel fontSize='lg' htmlFor={`$item-${uuid}-quantity`}>quantity</FormLabel>
           <Input
+            border={'1px'}
+    borderColor='pink.200'
+            rounded='sm'
             id={`$item-${uuid}-quantity`}
             value={quantity}
             type="number"
             onChange={(event) => updateQuantity(event.target.value)}
           />
         </Box>
-        <Box padding="space20" textAlign="right" width="100%">
-          <Heading variant="heading50">Total</Heading>
-          {toCurrency(total)}
-        </Box>
       </Flex>
+      <Box textAlign="right" width="100%">
+        <Heading variant="heading50">Total</Heading>
+        {toCurrency(total)}
+      </Box>
       <Box width="100%" textAlign="right">
-        <Button variant="destructive_secondary" size="small" onClick={remove}>
+        <Button variant={'solid'} bgColor='red.400' p='1' rounded='md' color='white' size="small" onClick={remove}>
           Remove
         </Button>
       </Box>
-    </Card>
+    </Stack>
   );
 };
 

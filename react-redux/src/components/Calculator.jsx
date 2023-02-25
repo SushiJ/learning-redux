@@ -1,4 +1,4 @@
-import { Card } from '@chakra-ui/react';
+import { Box, Card, Stack, VStack } from '@chakra-ui/react';
 import { TipSelectContainer } from '../containers/TipSelectContainer';
 
 import { MenuItems } from './MenuItems';
@@ -12,12 +12,12 @@ const items = [
 
 const Calculator = () => {
   return (
-    <Card>
-      <NewItemForm />
+    <VStack maxW='md' marginX='auto' marginY='10' >
+      <NewItemForm style={{ background: "green" }} />
       <MenuItems items={items} />
       <TipSelectContainer />
       <Summary />
-    </Card>
+    </VStack>
   );
 };
 
