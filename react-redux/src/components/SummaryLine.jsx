@@ -4,7 +4,7 @@ export const SummaryLine = ({ title, children }) => {
   return (
     <Flex>
       <Box width="100%" textAlign="right">
-        <Heading fontSize={'lg'}>{title}</Heading>
+        <Heading fontSize={'lg'} >{title}</Heading>
       </Box>
       <Box width="100%" textAlign="right">
         {children}

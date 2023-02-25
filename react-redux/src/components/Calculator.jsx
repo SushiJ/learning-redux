@@ -12,8 +12,8 @@ const items = [
 
 const Calculator = () => {
   return (
-    <VStack maxW='md' marginX='auto' marginY='10' >
-      <NewItemForm style={{ background: "green" }} />
+    <VStack maxW='lg' marginX='auto' marginY='10' border={'2px'} borderColor='gray.200' rounded={'md'} p='2'>
+      <NewItemForm />
       <MenuItems items={items} />
       <TipSelectContainer />
       <Summary />

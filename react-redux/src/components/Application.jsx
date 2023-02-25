@@ -2,7 +2,7 @@ import Calculator from './Calculator';
 
 function Application() {
   return (
-    <main style={{backgroundColor: ''}}>
+    <main style={{ border: "2px" }}>
       <Calculator />
     </main>
   );

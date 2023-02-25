@@ -21,17 +21,20 @@ export const MenuItem = ({
   remove = () => { }
 }) => {
   return (
-    <Stack w='full'>
+    <Stack w='full' border={'2px'} borderColor='gray.200' p='2'>
       <Heading fontSize='xl' p='1'>
         {name}
       </Heading>
-      <Flex>
+      <Flex >
         <Box p='1'>
           <FormLabel fontSize='lg' htmlFor={`$item-${uuid}-price`}>Price</FormLabel>
           <Input
-            w='auto'
-            border={'1px'}
-            rounded='sm'
+            w='full'
+            fontSize='md'
+            border='2px'
+            p='1'
+            rounded={'md'}
+            borderColor={'gray.200'}
             id={`$item-${uuid}-price`}
             value={price}
             type="number"
@@ -41,22 +44,25 @@ export const MenuItem = ({
         <Box p='1'>
           <FormLabel fontSize='lg' htmlFor={`$item-${uuid}-quantity`}>quantity</FormLabel>
           <Input
-            border={'1px'}
-    borderColor='pink.200'
-            rounded='sm'
+            w='10'
+            fontSize='md'
+            border='2px'
+            p='1'
+            rounded={'md'}
+            borderColor={'gray.200'}
             id={`$item-${uuid}-quantity`}
             value={quantity}
             type="number"
             onChange={(event) => updateQuantity(event.target.value)}
           />
         </Box>
+        <Box textAlign="right" width="100%">
+          <Heading fontSize={'lg'} py='1'>Total</Heading>
+          {toCurrency(total)}
+        </Box>
       </Flex>
-      <Box textAlign="right" width="100%">
-        <Heading variant="heading50">Total</Heading>
-        {toCurrency(total)}
-      </Box>
       <Box width="100%" textAlign="right">
-        <Button variant={'solid'} bgColor='red.400' p='1' rounded='md' color='white' size="small" onClick={remove}>
+        <Button variant={'outline'} border='1px' borderColor={'red.400'} p='1' rounded='sm' color='red.400' size="small" onClick={remove}>
           Remove
         </Button>
       </Box>
