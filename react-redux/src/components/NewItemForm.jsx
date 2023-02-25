@@ -1,4 +1,4 @@
-import { Box, Button, Input, FormLabel, VStack, FormControl, Stack, Flex } from '@chakra-ui/react';
+import { Box, Button, Input, FormLabel, FormControl, Stack } from '@chakra-ui/react';
 import { useState } from 'react';
 
 export const NewItemForm = ({ onSubmit }) => {
@@ -55,15 +55,15 @@ export const NewItemForm = ({ onSubmit }) => {
           />
         </Box>
         <Button
-          bgColor='pink'
+          backgroundColor={!isValid() ? 'pink.100' : 'pink'}
           p='2'
           rounded='md'
           mb='2'
           w='full'
-          disabled={!isValid()}
+          isDisabled={!isValid()}
+          cursor={!isValid() ? 'unset' : 'pointer'}
           onClick={handleSubmit}
           type="submit"
-          variant="primary"
         >
           🍳 Add Item
         </Button>
