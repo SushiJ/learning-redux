@@ -13,33 +13,26 @@ export const initialItems = [
   { uuid: id++, name: "Vegan ham sandwich", price: 12, quantity: 1 },
 ];
 
-export const reducer = (state = initialItems, action) => {
+export const reducer = produce((state = initialItems, action) => {
   if (action.type === ITEM_ADDED) {
     const item = {
       uuid: id++,
       quantity: 1,
       ...action.payload,
     };
-    return produce(state, (draftState) => {
-      draftState.push(item);
-    });
+    state.push(item);
   }
   if (action.type === ITEM_REMOVED) {
     return state.filter((item) => item.uuid !== action.payload.uuid);
   }
   if (action.type === ITEM_PRICE_UPDATED) {
-    return produce(state, (draftState) => {
-      const item = draftState.find((item) => item.uuid === action.payload.uuid);
-      item.price = parseInt(action.payload.price, 10);
-    });
+    const item = state.find((item) => item.uuid === action.payload.uuid);
+    item.price = parseInt(action.payload.price, 10);
   }
   if (action.type === ITEM_QUANTITY_UPDATED) {
-    return produce(state, (draftState) => {
-      const item = draftState.find((item) => item.uuid === action.payload.uuid);
-      item.quantity = parseInt(action.payload.quantity, 10);
-    });
+    const item = state.find((item) => item.uuid === action.payload.uuid);
+    item.quantity = parseInt(action.payload.quantity, 10);
   }
-  return state;
-};
+}, initialItems);
 
 export default reducer;
